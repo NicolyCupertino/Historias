@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Jornada: Um Portfólio de Aulas</title>
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importa a fonte 'Inter' (para a UI) e 'Lora' (para os textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define as fontes personalizadas */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+
+            /* --- Fundo Pastel --- */
+            background-color: #F0F9FF; /* Cor do Tailwind 'sky-50' */
+            background-image: 
+                radial-gradient(circle at 10% 20%, #FCE7F3 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, #E0F2FE 0%, transparent 35%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        /* Fonte serifada para os textos das aulas */
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+
+        /* Classes para a transição suave entre as "páginas" */
+        .page {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- ESTILOS ADICIONADOS PARA O TEXTO DA AULA --- */
+        #aula-content p {
+            text-align: justify;
+            text-indent: 2rem; /* 32px de indentação (o "tab") */
+        }
+        /* --- FIM DOS ESTILOS ADICIONADOS --- */
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Container Principal da Aplicação -->
+    <div id="app-container" class="min-h-screen">
+
+        <!-- Cabeçalho Fixo -->
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <nav class="container mx-auto px-6 py-4">
+                <h1 class="text-2xl font-bold text-indigo-700">Minha História</h1>
+                <p class="text-sm text-gray-600">Um portfólio de aulas e memórias.</p>
+            </nav>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="container mx-auto px-6 py-12">
+
+            <!-- PÁGINA INICIAL (Grid de Cards) -->
+            <div id="home-page" class="page">
+                <!-- Seção Hero -->
+                <section class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Entre Raízes e Caminhos</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Um portfólio de memórias, descobertas e afetos.
+Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nordestinas às vivências na cidade grande, das tradições familiares às reflexões sobre identidade, cultura e diversidade. Cada texto é um passo nesse caminho de autoconhecimento e transformação.
+                </section>
+
+                <!-- Container dos Cards -->
+                <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Os cards serão inseridos aqui pelo JavaScript -->
+                </div>
+            </div>
+
+            <!-- PÁGINA DA AULA (Conteúdo do Texto) -->
+            <div id="aula-page" class="page hidden">
+                <!-- Botão de Voltar -->
+                <button id="back-button" class="mb-8 inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Voltar para todas as aulas
+                </button>
+
+                <!-- Conteúdo da Aula -->
+                <article class="bg-white rounded-lg shadow-xl p-8 md:p-12 lg:p-16 max-w-4xl mx-auto">
+                    <!-- Título da Aula -->
+                    <h1 id="aula-title" class="text-4xl font-bold text-gray-900 mb-6"></h1>
+                    
+                    <!-- Texto Completo da Aula -->
+                    <div id="aula-content" class="prose prose-lg lg:prose-xl max-w-none text-gray-700 font-serif space-y-6">
+                        <!-- O texto completo será inserido aqui pelo JavaScript -->
+                    </div>
+                </article>
+            </div>
+
+        </main>
+
+        <!-- Rodapé -->
+        <footer class="text-center py-8 mt-16 border-t border-gray-200/80">
+            <p class="text-gray-500">&copy; 2025 - Seu Nome Aqui. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // -----------------------------------------------------------------
+            // ----- EDITE O CONTEÚDO DAS SUAS AULAS AQUI -----
+            // -----------------------------------------------------------------
+            const dadosDasAulas = [
+                {
+                    id: 1,
+                    titulo: "Aula 1: Nomes, Raízes e Identidade em Reconstrução",
+                    introducao: "Da origem dos meus sobrenomes à vivência entre o Maranhão e São Paulo, uma exploração sobre como a identidade é um processo vivo e em constante transformação.",
+                    textoCompleto: `
+                        <p>Minha história começa com os nomes que carrego — Silva, Oliveira e Cupertino — cada um trazendo consigo uma origem e um pedaço da história do Brasil.</p>
+                        <p>“Silva” é um dos sobrenomes mais antigos e comuns da língua portuguesa, vindo do latim silva, que significa floresta ou mata. É um nome que remete à terra, às raízes e à força da nature — e talvez por isso me identifique tanto com ele.</p>
+                        <p>“Oliveira” vem da árvore que simboliza a paz e a fertilidade, associada ao trabalho, à persistência e à vida em comunidade.</p>
+                        <p>Já “Cupertino” tem origem italiana, ligada à cidade de Copertino, e entrou na minha vida quando fui registrada.</p>
+                        <p>Eu não conheço meu pai verdadeiro, mas foi ele quem me deu esse último nome. Por muito tempo, o “Cupertino” foi apenas uma palavra em meus documentos — mas, com o tempo, aprendi que ele também representa uma parte de mim: a parte que, mesmo sem conhecer suas origens, aprende a se reinventar, a criar raízes próprias.</p>
+                        <p>Nasci no Maranhão, em 2005, e cresci entre dois mundos que, à primeira vista, pareciam opostos — o interior maranhense, cheio de tradições e histórias, e São Paulo, símbolo da modernidade e da pressa. Essa vivência entre espaços tão diferentes me ensinou cedo que a identidade não é algo fixo, mas um processo contínuo, em constante transformação.</p>
+                        <p>No Maranhão, vivi o contato com a cultura indígena da minha família materna. Minha tataravó, “pegada no laço”, representa uma história coletiva de dor e resistência — o retrato de um Brasil que tentou apagar suas origens, mas que sobrevive em cada gesto, em cada fala, em cada receita de família. Foi com ela, mesmo sem conhecê-la diretamente, que aprendi sobre força e ancestralidade.</p>
+                        <p>Em São Paulo, encontrei outro tipo de realidade: a das grandes cidades, das oportunidades, mas também das desigualdades. Aqui, compreendi como a estrutura social molda as possibilidades de cada um, e como os marcadores de origem — o sotaque, a cor da pele, a escola que você frequentou — ainda determinam como você é visto e tratado.</p>
+                        <p>Entre esses dois mundos, fui descobrindo as diferentes versões de mim: a Nicoly da cidade grande, que busca o futuro; e a Nicoly do interior, que carrega as memórias e os costumes de suas raízes. Cada uma dessas partes me ajuda a entender melhor quem eu sou e o que significa viver em um país tão diverso quanto o Brasil.</p>
+                        <p>Minha história, assim como meus sobrenomes, é feita de cruzamentos: de culturas, de afetos, de presenças e ausências. E é nesse entrelaçar de vivências que encontro o verdadeiro sentido de identidade — algo vivo, plural e em constante reconstrução.</p>
+                    `
+                },
+                {
+                    id: 2,
+                    titulo: "Aula 2: As Muitas Nicolys: Subjetividade e Estruturas Sociais",
+                    introducao: "A partir de uma aula sobre dinâmicas sociais, reflito sobre as 'muitas Nicolys' que existem: do trabalho à faculdade, como as estruturas moldam a subjetividade.",
+                    textoCompleto: `
+                        <p>Compreender a pluralidade das subjetividades e das identidades é, para mim, compreender a minha própria história. Nasci no Maranhão, em 2005, e desde cedo percebi que o que nos torna humanos é a diversidade de modos de viver e de sentir o mundo. Cresci entre dois espaços que se opunham em quase tudo — o interior maranhense, marcado pelas tradições indígenas e pela vida rural, e São Paulo, símbolo do desenvolvimento e da modernidade. Essas duas realidades me ensinam que a identidade não é algo fixo, mas um processo contínuo, moldado pelas experiências e pelos lugares por onde passamos.</p>
+                        <p>Durante a aula sobre dinâmicas sociais, vivi um momento de grande impacto pessoal. As discussões sobre como o indivíduo é moldado pelas estruturas da sociedade e, ao mesmo tempo, é capaz de transformá-las, me fizeram revisitar minha própria história. Foi como se cada conceito explicado em sala me convidasse a olhar para dentro de mim — para as origens que me formaram, para as atitudes que repito sem perceber, e para o peso das memórias que carrego.</p>
+                        <p>Percebi o quanto o sistema tenta, há séculos, apagar a história de pessoas como eu, descendentes de indígenas, trabalhadores rurais e mulheres fortes que resistiram silenciosamente. Entendi que estudar sobre as dinâmicas sociais é também um exercício de autoconhecimento, porque é impossível compreender o mundo sem compreender de onde viemos.</p>
+                        <p>Com o tempo, percebi que as ideias de sujeito e subjetividade se transformam conforme o ambiente em que estamos. Em cada espaço da minha vida, existe uma Nicoly diferente.</p>
+                        <p>A Nicoly do trabalho precisa atender às restrições de conduta, agir com disciplina e manter a postura esperada por um ambiente hierárquico, em que a liberdade parece existir apenas dentro de regras.</p>
+                        <p>A Nicoly da faculdade enfrenta outro tipo de estrutura: a figura autoritária do professor, a sala de aula onde as carteiras são fixas ao chão e a lousa está sempre à frente — como se o próprio espaço físico fosse desenhado para nos lembrar do nosso lugar e limitar nossas possibilidades. De forma análoga, o Estado faz o mesmo conosco: quer nos manter presos, controlados, sem liberdade real para agir, falar ou questionar. Essa tal “liberdade de expressão”, que é um direito de todos, parece valer apenas quando se pertence ao grupo que o sistema decide favorecer.</p>
+                        <p>Já a Nicoly dos amigos é a que mais se aproxima da liberdade — a que fala o que pensa, ri, brinca, conhece outras histórias e se sente parte de algo maior. E há ainda a Nicoly da família, a que cuida, brinca, mas que, pelas exigências da vida, nem sempre consegue estar presente como gostaria. Essas versões de mim não são contradições, mas reflexos das estruturas e das dinâmicas sociais que nos moldam e, muitas vezes, nos restringem.</p>
+                        <p>A aula me fez entender que o sujeito não é apenas alguém que sofre os impactos das estruturas sociais, mas também alguém que tem o poder de questioná-las e transformá-las. Revisitar minhas origens foi um ato de resistência — reconhecer minhas raízes indígenas, minhas histórias silenciadas e minha trajetória de superação é uma forma de dizer que minha voz existe e importa.</p>
+                        <p>Hoje, ao olhar para minha caminhada, percebo que cada espaço, cada pessoa e cada lembrança contribuíram para formar a Nicoly que sou. Compreender essa pluralidade é reconhecer que não há um único modo de ser sujeito. Somos múltiplos, complexos e em constante transformação. Minha história é também a de muitos — a história de quem resiste, de quem sonha e de quem, mesmo diante de todas as limitações impostas, continua acreditando que outro mundo é possível.</p>
+                    `
+                },
+                {
+                    id: 3,
+                    titulo: "Aula 3: Privilégio, Raça e a Ancestralidade que Resiste",
+                    introducao: "Uma análise sobre relações étnico-raciais, privilégio branco e interseccionalidade, questionando o apagamento da minha ancestralidade indígena.",
+                    textoCompleto: `
+                        <p>Quando penso na minha história, me pergunto: quando “surgiu” o Maranhão? O que levou à expulsão e ao apagamento de tantos povos originários deste lugar?</p>
+                        <p>Essas perguntas ecoam em mim, porque a influência indígena faz parte profunda da minha ancestralidade, mesmo que nem sempre tenha sido reconhecida. Minha família, marcada por essa presença indígena, também carrega o silêncio histórico de um Brasil que, por séculos, apagou e inferiorizou os povos nativos, substituindo suas narrativas por uma ideia de “civilização” europeia.</p>
+                        <p>Essas marcas estão diretamente ligadas às relações étnico-raciais — relações que estruturam e organizam a sociedade desde o período colonial, sustentadas por estereótipos, preconceitos e práticas etnocêntricas.</p>
+                        <p>O etnocentrismo fez com que uma cultura — a europeia, branca — fosse imposta como o padrão de humanidade, de beleza, de racionalidade. Isso ainda reverbera quando, por exemplo, pessoas de origem indígena ou negra são associadas à inferioridade, à falta de instrução, ou até quando as identidades mestiças são apagadas pela necessidade de “escolher” ser branco para ser aceito.</p>
+                        <p>Sou uma mulher branca, e reconheço os privilégios que vêm com essa identidade. Ainda que ser mulher traga desafios e desigualdades, ser branca me abre portas que outras mulheres — negras ou indígenas — ainda têm que forçar para abrir. Tenho consciência de que poder estudar em uma boa faculdade e ver mulheres em cargos de liderança é fruto de lutas históricas femininas. Mas às vezes me pergunto: vale a pena ser vista e privilegiada como branca, se o preço foi o apagamento da minha verdadeira história?</p>
+                        <p>Essa reflexão me faz compreender o quanto as interseccionalidades — o cruzamento entre gênero, raça, etnia e classe — moldam nossas experiências. Enquanto minha mãe, negra, era confundida com minha babá quando eu era criança, eu, por ser branca e loira, era automaticamente associada ao “lugar certo” socialmente. Essa é a prova de como o racismo opera de forma silenciosa, normalizando desigualdades e naturalizando papéis sociais.</p>
+                        <p>Ainda vivemos em um país onde é “comum” ver pessoas negras e indígenas ocupando cargos de menor prestígio, e onde o medo e o preconceito ainda se disfarçam de “cautela”. Eu mesma já reproduzi esses medos, e reconheço que o primeiro passo para combatê-los é assumir a responsabilidade de enxergar o racismo em mim e ao meu redor.</p>
+                        <p>As relações étnico-raciais e de gênero precisam ser discutidas com seriedade, especialmente por quem está em posição de privilégio.</p>
+                        <p>Reconhecer a ancestralidade, valorizar as identidades diversas e enfrentar os preconceitos estruturais são passos essenciais para uma sociedade realmente justa e plural — uma sociedade onde eu possa dizer com orgulho: sou branca, mas também sou filha de uma história indígena que resiste.</p>
+                    `
+                },
+                {
+                    id: 4,
+                    titulo: "Aula 4: Gênero, Afeto e Tradição",
+                    introducao: "Uma reflexão sobre gênero e sexualidade a partir da história da minha tia no Maranhão, e como o afeto pode desafiar estruturas sociais rígidas.",
+                    textoCompleto: `
+                        <p>Compreender as relações de gênero e sexualidades é, antes de tudo, compreender o modo como a sociedade molda nossos corpos, nossas identidades e até o que acreditamos ser “normal”. Ao longo da minha vida, percebo que ser mulher, cis e heterossexual me fez ocupar um espaço social mais aceito, mas nem por isso livre de imposições. O que sou e como sou vista foi, em muitos momentos, definido por estruturas que antecedem a minha existência — costumes, tradições, papéis esperados.</p>
+                        <p>Cresci observando de perto como essas normas sociais influenciam não apenas indivíduos, mas famílias inteiras. Na minha, por exemplo, as relações de gênero e sexualidade sempre estiveram presentes como tema, mesmo quando o silêncio parecia dominar. Minha tia, irmã da minha mãe, foi a única homossexual entre nove irmãos, todos criados no interior do Maranhão, em uma época e em um lugar onde “ser diferente” era quase um crime social.</p>
+                        <p>Meu avô, homem simples e rígido, não compreendia o que fugia do padrão que conhecia. Para ele, as coisas tinham de seguir a tradição, e não havia espaço para o que não se encaixasse nessa forma de ver o mundo. Mas, aos poucos, o afeto foi quebrando barreiras. Mesmo com toda a dificuldade, meus avós entenderam que o mais importante era o bem-estar da filha, que o amor e a dignidade não mudam com a orientação sexual. Essa aceitação, que parece simples, foi na verdade um ato de coragem — uma pequena revolução dentro de uma estrutura que, por gerações, ensinou o contrário.</p>
+                        <p>Essa história familiar me fez entender que gênero e sexualidade não são apenas categorias teóricas — são dimensões vividas, sofridas e transformadas diariamente por pessoas reais. São experiências que atravessam corpos, memórias e relações. E foi justamente isso que as discussões em sala me fizeram perceber: o quanto essas construções sociais definem quem é ouvido, quem é silenciado, quem é acolhido e quem é excluído.</p>
+                        <p>Hoje, vejo que as identidades não são caixas fixas. Elas se movem, se misturam, se refazem. E, por isso mesmo, é preciso respeito e empatia com cada trajetória. A ideia de “pós-identidade” me faz pensar que, talvez, o futuro esteja em um mundo onde as pessoas não precisem mais se justificar por quem são, nem lutar para existir dentro de uma sociedade que insiste em colocar rótulos.</p>
+                        <p>Ser mulher, para mim, também é carregar as marcas das que vieram antes — aquelas que foram silenciadas, as que resistiram e as que, mesmo sem entender tudo, escolheram o amor como resposta. Aprendi com a história da minha tia e da minha mãe que o gênero e a sexualidade são atravessados por outras questões — pela classe, pela cultura, pela origem. No interior do Maranhão, onde nascer diferente é quase uma sentença, resistir é um ato político.</p>
+                        <p>Compreender tudo isso me faz repensar meu lugar no mundo. Eu sou a Nicoly que aprendeu a observar, a respeitar e a entender que cada pessoa é feita de camadas, de histórias e de silêncios. E que essas diferenças, longe de nos separar, revelam a riqueza da nossa humanidade.</p>
+                    `
+                },
+                {
+                    id: 5,
+                    titulo: "Aula 5: O Que Define uma Família?",
+                    introducao: "Uma reflexão sobre as novas configurações familiares, partindo da minha própria história — da monoparental à estendida — e questionando o que realmente define um laço.",
+                    textoCompleto: `
+                        <p>Nas últimas décadas, o modelo de família “tradicional” — aquele formado por pai, mãe e filhos — vem sendo substituído por novas formas de convivência, refletindo as transformações sociais, culturais e afetivas do nosso tempo. Hoje, o conceito de família é muito mais plural e dinâmico: vai além dos laços biológicos e se constrói sobre o amor, o cuidado e o apoio mútuo.</p>
+                        <p>A minha própria história é um exemplo disso.</p>
+                        <p>Se alguém observasse minha família hoje, talvez dissesse que ela é “tradicional”, mas essa é apenas uma aparência. Nasci em uma família monoparental, composta apenas por mim e minha mãe. Essa foi nossa configuração inicial, até que, por volta do meu primeiro ano de vida, passamos a formar uma família estendida: eu, minha mãe, minha tia, meu tio e meus primos. Essa união ultrapassou os laços de sangue — foi uma necessidade econômica e afetiva. Enquanto minha tia cuidava de mim e das outras crianças, minha mãe e meu tio trabalhavam para sustentar todos nós.</p>
+                        <p>Mais tarde, eu e minha mãe voltamos a morar sozinhas, mas, novamente, não por muito tempo. Quando eu tinha cerca de sete anos, minha mãe começou a morar com o meu padrasto e, um ano depois, nasceu meu primeiro irmão. Assim, formamos o que muitos chamariam de família tradicional. Com o nascimento do meu segundo irmão, o vínculo entre eles se consolidou ainda mais, mesmo sem um casamento formal — viviam em união estável, o que, na prática, era o mesmo que uma vida de casados.</p>
+                        <p>Há cerca de três anos, meu padrasto me registrou oficialmente. Legalmente, sou filha dele também. Mas, sinceramente, nada mudou em relação ao nosso vínculo — ele continua sendo meu padrasto, alguém que fez parte da minha história, mas sem ocupar o espaço emocional de “pai”, um lugar que permanece desocupado dentro de mim.</p>
+                        <p>Minha mãe, com toda a força que sempre teve, fez o possível para preencher esse vazio, mas há coisas que, por mais amor que se tenha, simplesmente não se substituem. Nada me faltou, mas algumas presenças poderiam ter feito diferença.</p>
+                        <p>Na minha família, há muitos exemplos de configurações familiares não tradicionais: uniões estáveis sem casamento, avós que criaram os filhos de seus filhos, tios que assumiram papéis de pais, e por aí vai. A cada geração, a ideia de família se amplia, se transforma e resiste aos padrões impostos.</p>
+                        <p>Hoje, eu mesma vivo uma nova forma de família: tenho um namorado, e a minha família se estende à dele, não apenas por laços formais, mas por uma união amorosa, que também é uma forma legítima de afeto e pertencimento.</p>
+                        <p>Essa trajetória me faz questionar: quem define o que é uma “família de verdade”?</p>
+                        <p>Durante muito tempo, essa definição foi construída dentro de uma lógica patriarcal e religiosa, que tentava encaixar todas as pessoas em um mesmo molde. Mas a sociedade muda, e com ela mudam também as formas de amar, de cuidar e de viver.</p>
+                        <p>Família, para mim, é onde existe acolhimento. Não é a estrutura que define o amor, e sim o amor que dá sentido à estrutura.</p>
+                        <p>Muitos ainda questionam, por exemplo, as famílias homoparentais, alegando que isso poderia causar “confusão” sobre a sexualidade das crianças. Mas, se fosse assim, não haveriam pessoas homossexuais vindas de famílias ditas tradicionais. A dúvida, o medo e a descoberta fazem parte da experiência humana — e o papel da família não é determinar quem alguém será, mas oferecer um espaço de aceitação, segurança e liberdade para que cada um possa ser quem é.</p>
+                        <p>Quando penso no meu futuro, me vejo em uma união estável com o meu namorado, vivendo uma relação baseada em respeito e cumplicidade — mas sem o desejo de ter filhos. Não por rejeitar a maternidade, mas por entender que minha forma de construir afeto e pertencimento pode seguir outros caminhos. Essa também é uma escolha, e como toda escolha, deve ser respeitada.</p>
+                        <p>As novas configurações familiares mostram que os laços humanos são muito mais profundos e complexos do que qualquer padrão imposto. Cada família é única, e todas merecem o mesmo reconhecimento.</p>
+                        <p>A minha, com suas idas e vindas, ausências e reencontros, me ensinou que família é lugar de afeto, de resistência e de recomeço — e que amar, cuidar e permanecer é o que realmente sustenta qualquer laço.</p> 
+                    `
+                },
+                {
+                    id: 6,
+                    titulo: "Aula 6: Fé, Família e Diversidade Religiosa",
+                    introducao: "Uma reflexão sobre religião como sentimento, a tradição católica da minha avó, meu encontro com o protestantismo e a importância do respeito à pluralidade da fé.",
+                    textoCompleto: `
+                        <p>Religião, para mim, é antes de tudo um sentimento.</p>
+                        <p>É a busca por algo maior, que ultrapassa o racional e se manifesta na fé, nos rituais e nas tradições. É também o ato de se adequar a uma forma de pensar, sentir e viver — um conjunto de dogmas, símbolos e práticas que ajudam as pessoas a se relacionarem com o sagrado e com a comunidade ao redor.</p>
+                        <p>Cada indivíduo tem sua própria maneira de viver e compreender a espiritualidade. Por isso, é impossível imaginar que em um país tão diverso quanto o Brasil exista apenas uma forma de crer.</p>
+                        <p>Vivemos em uma sociedade que, em teoria, se diz plural e livre, mas que, na prática, ainda reproduz preconceitos e hierarquias religiosas.</p>
+                        <p>Expressões como “chuta que é macumba” ou “isso é coisa do demônio” mostram o desrespeito e a intolerância com religiões de matriz africana e outras práticas que fogem ao padrão dominante. Essas frases revelam o quanto ainda existe resistência em aceitar o diferente e o quanto as religiões também carregam marcas da história — como o racismo e o colonialismo que tentaram apagar a espiritualidade do povo negro e indígena.</p>
+                        <p>Na minha família, felizmente, nunca houve brigas ou imposições por religião. O respeito sempre foi a base de tudo, e acredito que isso vem da nossa própria trajetória.</p>
+                        <p>Minha família materna é muito católica. Minha avó, em especial, tem uma fé profunda em seus santos. Todos os dias, ela reza com devoção, pedindo bênçãos não só para a nossa família, mas também para todos que precisam, mesmo que não sejam da mesma religião que a dela. Essa atitude sempre me inspirou, porque mostra que a fé verdadeira não se limita a um credo — ela se expressa através da empatia e da bondade.</p>
+                        <p>Fui batizada na Igreja Católica, seguindo essa tradição familiar. Mas, conforme fui crescendo, tive contato com o protestantismo, e foi nele que acabei me encontrando até hoje, participando da Congregação Cristã.</p>
+                        <p>Nessa comunidade, encontrei um espaço de acolhimento e espiritualidade que combina com o que acredito. Os cultos simples, os cânticos e a comunhão com outras pessoas de fé me trazem paz e sentido.</p>
+                        <p>Mesmo assim, entendo que a minha maneira de viver a fé não é a única, nem deve ser imposta a ninguém.</p>
+                        <p>Aprendi que respeitar a religiosidade do outro é um ato de amor e humanidade, e que a diversidade religiosa é um dos maiores patrimônios do nosso país.</p>
+                        <p>Cada religião, seja ela cristã, afro-brasileira, indígena ou de qualquer outra origem, traz consigo uma forma de enxergar o mundo e de organizar a vida em comunidade. Elas influenciam comportamentos, valores, costumes e até estruturas sociais. A religião pode unir, confortar e transformar, mas também pode excluir — e é nesse ponto que devemos sempre refletir.</p>
+                        <p>Entendo que minha própria trajetória de fé é também uma performance social e cultural — um modo de me expressar dentro de uma tradição que molda parte da minha identidade, mas sem me aprisionar.</p>
+                        <p>A fé, para mim, deve ser liberdade, não obrigação.</p>
+                        <p>E talvez esse seja o verdadeiro sentido da religiosidade: não seguir cegamente, mas viver com propósito, respeito e empatia.</p>
+                    `
+                },
+                // --- INÍCIO DA ATUALIZAÇÃO DAS ATIVIDADES ---
+                {
+                    id: 9,
+                    titulo: "Atividades",
+                    introducao: "Uma coleção de atividades, exercícios praticos e outras reflexões feitas durante as aulas.",
+                    textoCompleto: `
+                        <p>Há coisas que parecem simples à primeira vista — um marca-texto, uma fita decorativa, uma caneta. Mas quando olhamos mais de perto, percebemos que nada do que carregamos é por acaso. Cada objeto é um pequeno guardião de lembranças, um fragmento do que fomos, do que somos e do que nos tornamos ao longo do caminho.</p>
+                        <p>Na atividade de trocas que fizemos em sala, fomos convidados a deixar um pouco de nós no palco. Ali, sobre uma mesa simples, objetos se transformaram em histórias.</p>
+                        <p>Quem pegava algo, precisava explicar o porquê — o que aquele objeto evocava, que lembrança despertava, que sentimento trazia à tona. Depois, o verdadeiro dono compartilhava o motivo de carregá-lo, revelando o pedaço de vida escondido atrás de algo aparentemente banal.</p>
+                        <p>Quando chegou minha vez, escolheram o meu objeto: um marca-texto. Aquela canetinha colorida me acompanha desde que uma amiga da faculdade me emprestou, tempos atrás, para um trabalho que estávamos fazendo juntas. Eu acabei nunca devolvendo — não por descuido, mas porque, de alguma forma, aquele pequeno objeto acabou ficando comigo como lembrança de um momento simples e afetuoso, de parceria, de risadas em meio à correria da vida acadêmica.</p>
+                        <p>Hoje, quando olho para ele, não vejo apenas um instrumento de estudo, mas um símbolo das conexões que formamos com as pessoas e de como até nas pequenas distrações moram histórias bonitas.</p>
+                        <p>Naquele mesmo dia, fui eu quem escolheu uma fita decorativa. A menina que a trouxe contou que adora artes e decorar cadernos, que cada fita ou adesivo é para ela uma forma de expressar o que sente, de dar cor e forma às ideias.</p>
+                        <p>A fita que escolhi tinha desenhos de um céu cheio de sol, nuvens e estrelas — e eu, que sempre me encantei por esse universo de infinitos, me vi naquele pequeno rolo de cor e brilho. Usei-o para decorar meu caderno, e ele se tornou um lembrete das pequenas belezas do cotidiano, dessas trocas silenciosas que nos conectam mesmo sem palavras.</p>
+                        <p>Em outra atividade de trocas, peguei a caneta de um menino. Ele a carregava desde uma feira de estágios da qual havia participado — um marco de conquistas, sonhos e novos começos. Aquela caneta não era só um objeto; era símbolo de esforço e esperança, de quem quer escrever seu futuro.</p>
+                        <p>E ao pegá-la, senti como se também estivesse segurando um pouco dessa energia — dessa vontade de continuar trilhando o meu caminho com o mesmo brilho nos olhos.</p>
+                        <p>Essas experiências me fizeram perceber que os objetos são muito mais do que coisas: são extensões de quem somos, pontes entre memórias e emoções.</p>
+                        <p>Eles nos lembram de pessoas, de lugares, de fases da vida, e até de sentimentos que às vezes esquecemos de revisitar.</p>
+                        <p>Trocar objetos, nesse sentido, foi também trocar afetos, reconhecer o outro e ser reconhecida.</p>
+                        <p>Foi olhar para algo e, por um instante, sentir que compreendia um pedaço da história de alguém — e permitir que alguém compreendesse um pedaço da minha.</p>
+                    `
+                }
+                // --- FIM DA ATUALIZAÇÃO DAS ATIVIDADES ---
+            ];
+            // -----------------------------------------------------------------
+            // ----- FIM DA ÁREA DE EDIÇÃO -----
+            // -----------------------------------------------------------------
+
+
+            // Seleciona os elementos principais da página
+            const homePage = document.getElementById('home-page');
+            const aulaPage = document.getElementById('aula-page');
+            const cardsContainer = document.getElementById('cards-container');
+            const aulaTitle = document.getElementById('aula-title');
+            const aulaContent = document.getElementById('aula-content');
+            const backButton = document.getElementById('back-button');
+
+            /**
+             * Função para renderizar os cards na página inicial
+             */
+            function renderizarCards() {
+                cardsContainer.innerHTML = '';
+                dadosDasAulas.forEach(aula => {
+                    const cardHtml = `
+                        <div class="card-aula bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer" data-aula-id="${aula.id}">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-indigo-700 mb-2">${aula.titulo}</h3>
+                                <p class="text-gray-600 mb-4">${aula.introducao}</p>
+                                <span class="font-semibold text-indigo-600 hover:text-indigo-800">Ler história completa &rarr;</span>
+                            </div>
+                        </div>
+                    `;
+                    cardsContainer.innerHTML += cardHtml;
+                });
+            }
+
+            /**
+             * Função para mostrar a página de uma aula específica
+             */
+            function mostrarPaginaAula(id) {
+                const aula = dadosDasAulas.find(a => a.id == id);
+                if (!aula) return; 
+
+                aulaTitle.textContent = aula.titulo;
+                aulaContent.innerHTML = aula.textoCompleto;
+
+                homePage.classList.add('hidden');
+                aulaPage.classList.remove('hidden');
+                
+                window.scrollTo(0, 0);
+            }
+
+            /**
+             * Função para voltar à página inicial
+             */
+            function mostrarHomePage() {
+                aulaPage.classList.add('hidden');
+                homePage.classList.remove('hidden');
+                
+                window.scrollTo(0, 0);
+            }
+
+            // --- Event Listeners ---
+            cardsContainer.addEventListener('click', (event) => {
+                const cardClicado = event.target.closest('.card-aula');
+                if (cardClicado) {
+                    const aulaId = cardClicado.dataset.aulaId;
+                    mostrarPaginaAula(aulaId);
+                }
+            });
+
+            backButton.addEventListener('click', mostrarHomePage);
+
+            // --- Inicialização ---
+            renderizarCards();
+        });
+    </script>
+
+</body>
+</html>
