@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Jornada: Um Portfólio de Aulas</title>
-    <!-- Carrega o Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega o Tailwind CSS com o plugin de Tipografia ativado -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <!-- Importa a fonte 'Inter' (para a UI) e 'Lora' (para os textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +47,37 @@
             text-align: justify;
             text-indent: 2rem; /* 32px de indentação (o "tab") */
         }
+
+        /* Estilo automático para IMAGENS dentro do texto */
+        #aula-content img {
+            display: block;
+            margin: 2rem auto; /* Centraliza a imagem e dá espaço */
+            max-width: 100%; /* Garante que não ultrapasse a largura */
+            border-radius: 0.5rem; /* Cantos arredondados */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra suave */
+        }
+
+        /* Estilo automático para LINKS dentro do texto */
+        #aula-content a {
+            color: #4f46e5; /* Cor Indigo */
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        #aula-content a:hover {
+            color: #4338ca; /* Indigo mais escuro ao passar o rato */
+        }
+        
+        /* Ajuste para legendas de imagem se usar <figure> e <figcaption> */
+        #aula-content figcaption {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: -1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
         /* --- FIM DOS ESTILOS ADICIONADOS --- */
     </style>
 </head>
@@ -72,8 +103,9 @@
                 <section class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-900 mb-4">Entre Raízes e Caminhos</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Um portfólio de memórias, descobertas e afetos.
-Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nordestinas às vivências na cidade grande, das tradições familiares às reflexões sobre identidade, cultura e diversidade. Cada texto é um passo nesse caminho de autoconhecimento e transformação.
+                        Uma coleção de histórias, reflexões e memórias desenvolvidas ao longo das aulas.
+                        Cada card abaixo representa um capítulo dessa jornada.
+                    </p>
                 </section>
 
                 <!-- Container dos Cards -->
@@ -119,6 +151,9 @@ Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nor
             // -----------------------------------------------------------------
             // ----- EDITE O CONTEÚDO DAS SUAS AULAS AQUI -----
             // -----------------------------------------------------------------
+            // DICA: Para adicionar imagens use: <img src="URL_DA_IMAGEM" alt="Descrição">
+            // DICA: Para adicionar links use: <a href="URL_DO_LINK" target="_blank">Texto do Link</a>
+            // -----------------------------------------------------------------
             const dadosDasAulas = [
                 {
                     id: 1,
@@ -126,7 +161,7 @@ Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nor
                     introducao: "Da origem dos meus sobrenomes à vivência entre o Maranhão e São Paulo, uma exploração sobre como a identidade é um processo vivo e em constante transformação.",
                     textoCompleto: `
                         <p>Minha história começa com os nomes que carrego — Silva, Oliveira e Cupertino — cada um trazendo consigo uma origem e um pedaço da história do Brasil.</p>
-                        <p>“Silva” é um dos sobrenomes mais antigos e comuns da língua portuguesa, vindo do latim silva, que significa floresta ou mata. É um nome que remete à terra, às raízes e à força da nature — e talvez por isso me identifique tanto com ele.</p>
+                        <p>“Silva” é um dos sobrenomes mais antigos e comuns da língua portuguesa, vindo do latim silva, que significa floresta ou mata. É um nome que remete à terra, às raízes e à força da natureza — e talvez por isso me identifique tanto com ele.</p>
                         <p>“Oliveira” vem da árvore que simboliza a paz e a fertilidade, associada ao trabalho, à persistência e à vida em comunidade.</p>
                         <p>Já “Cupertino” tem origem italiana, ligada à cidade de Copertino, e entrou na minha vida quando fui registrada.</p>
                         <p>Eu não conheço meu pai verdadeiro, mas foi ele quem me deu esse último nome. Por muito tempo, o “Cupertino” foi apenas uma palavra em meus documentos — mas, com o tempo, aprendi que ele também representa uma parte de mim: a parte que, mesmo sem conhecer suas origens, aprende a se reinventar, a criar raízes próprias.</p>
@@ -227,11 +262,158 @@ Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nor
                         <p>E talvez esse seja o verdadeiro sentido da religiosidade: não seguir cegamente, mas viver com propósito, respeito e empatia.</p>
                     `
                 },
-                // --- INÍCIO DA ATUALIZAÇÃO DAS ATIVIDADES ---
+                {
+                    id: 7,
+                    titulo: "Avaliação Parcial",
+                    introducao: "Um encontro entre a minha história e a dos meus colegas — Beatriz, Daniel e Rayanny — e uma reflexão individual sobre como a disciplina me permitiu revisitar minhas raízes e identidade.",
+                    textoCompleto: `
+                        <h2>Parte 1 - Histórias Cruzadas</h2>
+                        <p>As histórias dos meus colegas — Beatriz, Daniel e Rayanny — se misturam com a minha em muitos pontos, mesmo que cada uma tenha nascido em um canto diferente e carregue raízes particulares. Juntas, elas mostram como cultura, sociedade, religião, desigualdades e família moldam quem somos. E, ao olhar para nós quatro, percebo como o Brasil é um país feito de encontros, migrações, rupturas e reconstruções.</p>
+                        <p>A Beatriz e o Daniel nasceram em São Paulo, mas carregam uma forte ligação com o Nordeste, assim como eu. As origens deles mostram algo comum na história brasileira: a migração forçada pela desigualdade. As famílias buscaram melhores condições de vida, deixando para trás terras de pouca oportunidade. A história da Beatriz, por exemplo, carrega traços nordestinos na fala, na comida, nas expressões — e isso permanece vivo mesmo anos depois. Ela fala sobre como sua família teve pouco acesso à educação, algo que também aconteceu na minha: minha avó e outros membros da minha família não puderam estudar, porque precisavam trabalhar desde cedo. Essa parte da história dela conversa diretamente com a minha realidade.</p>
+                        <p>Daniel também carrega essa mistura de origens. A família dele é parte nordestina e parte palestina — uma história marcada por mudança de país, mudança de nome e tentativas de adaptação, algo que lembra muito o apagamento cultural que aconteceu com minha tataravó, que foi “pegada no laço” e teve sua identidade indígena silenciada. Quando ele fala sobre se reconhecer fisicamente e pensar nas raízes e no preconceito que sua família viveu, isso também se aproxima da minha história e do meu processo de entender as violências que atravessam o Brasil há séculos.</p>
+                        <p>Já a Rayanny tem uma origem completamente diferente: família japonesa de um lado e europeia do outro. Mas, mesmo com essa distância, existe um ponto em comum entre nós: o movimento em busca de uma vida melhor e a forma como a mistura cultural cria novas identidades. Ela conta que cresceu em um ambiente privilegiado, mas que ao mudar de escola percebeu a desigualdade social. Isso é algo que todos nós percebemos em algum momento — que não vivemos no mesmo país, mesmo estando no mesmo espaço. Além disso, ela se interessa pelo estudo da mente humana, pelas nossas singularidades, e isso também faz parte do que estudamos na disciplina: subjetividade, identidade e cultura como processos vivos.</p>
+                        <p>Outro ponto em comum entre nós quatro é a relação com a religiosidade. Eu cresci em um ambiente de fé — católica, evangélica e com o respeito profundo da minha avó pelos santos e pelas crenças dos outros. Já a Rayanny e a Beatriz são agnósticas, mas têm em comum o respeito a todas as formas de expressão religiosa. Isso mostra como, mesmo com caminhos diferentes, todos nós aprendemos a ver a religião como parte da identidade do outro, e não como motivo de disputa.</p>
+                        <p>No fim, apesar de nossas origens tão diferentes — indígena e maranhense no meu caso, palestina e nordestina no Daniel, nordestina na Beatriz, japonesa e europeia na Rayanny — existe algo que nos aproxima muito: a compreensão de que nossas identidades são construídas pelas nossas vivências, pelas memórias das nossas famílias e pelas desigualdades que atravessam o Brasil. Todos nós carregamos raízes que, de formas diferentes, sofreram algum tipo de apagamento, preconceito ou limitação. E todos nós estamos aqui hoje tentando reconstruir e valorizar essas histórias.</p>
+                        <p>O que une todas as nossas trajetórias é a busca por respeito, pertencimento, educação e a certeza de que diversidade não é obstáculo — é força. E que, por mais diferentes que sejamos, aprendemos uns com os outros justamente porque cada história é única e carrega uma parte importante do que somos enquanto sociedade.</p>
+                        
+                        <h2>Parte 2 - Individual: Um Espelho de Mim Mesma</h2>
+                        <p>Ao longo dessa disciplina, percebi que não estava só estudando teoria, mas também revisitando a minha própria história — uma história marcada por resistência, mistura cultural e tentativas de apagamento. Nasci no Maranhão, um estado atravessado por desigualdades, mas também muito rico em tradições. Embora eu tenha nascido na capital, minha verdadeira origem está ligada às raízes indígenas da minha família. A história da minha tataravó, “pegada no laço”, sempre me marcou porque mostra de forma muito clara como a colonização tentou silenciar culturas inteiras. Meus sobrenomes — Silva e Oliveira — carregam essa história comum do Brasil colonizado, enquanto “Cupertino”, que veio do meu padrasto, não muda meu DNA, mas transformou quem eu sou e a forma como existo no mundo.</p>
+                        <p>Crescer entre dois mundos — o rural e o urbano, o Maranhão e São Paulo — me fez entender na prática como nossa subjetividade muda conforme o contexto. A “eu” do trabalho precisa seguir normas; a da faculdade precisa respeitar regras acadêmicas; já com meus amigos sou mais livre e brincalhona. Essa disciplina me ajudou a colocar em palavras essa ideia de que não existe um único “eu”, mas vários, que aparecem de acordo com cada espaço social.</p>
+                        <p>As discussões sobre diversidade cultural e etnocentrismo fizeram muito sentido quando pensei na minha família. Antes, eu via diversidade como algo natural, mas não entendia suas raízes estruturais. Hoje eu reconheço como estereótipos e preconceitos moldam a sociedade e como certas culturas são colocadas como inferiores. A história da minha tataravó é um exemplo vivo disso: sua identidade indígena foi tratada como algo a ser apagado. Perceber isso reforçou em mim a importância de valorizar e proteger as diferentes formas de existir.</p>
+                        <p>As conversas sobre gênero e sexualidade também mexeram comigo. A história da minha tia, a única homossexual entre nove irmãos, numa cidade pequena do interior do Maranhão, mostra como essas dimensões são carregadas de desigualdade e julgamento. Ela sofreu rejeição, olhares tortos e tentativas de silenciamento, mas nunca deixou de ser quem era. Meu avô, apesar de bruto e fechado, aprendeu aos poucos que o amor é mais importante do que qualquer preconceito. Ver essa transformação me ensinou que falar de gênero e sexualidade é, no fim das contas, falar de amor, respeito e humanidade.</p>
+                        <p>No tema das configurações familiares, percebo que minha história é um exemplo real das mudanças pelas quais as famílias passam hoje. Comecei em uma família monoparental, só eu e minha mãe; depois, por motivos de vida e afeto, passamos a viver em uma família ampliada com meu padrasto e irmãos. É uma família que, por fora, parece “tradicional”, mas que na verdade carrega muitas camadas de reconstrução. Isso me fez entender que família de verdade não é definida por documentos, mas pela convivência, pelo cuidado diário e pelo amor compartilhado.</p>
+                        <p>Sobre religiosidade, cresci em um ambiente cheio de fé. Fui batizada na Igreja Católica, mas me encontrei no protestantismo, especialmente na Congregação. Ainda assim, sempre admirei a fé da minha avó, uma mulher profundamente católica que rezava todos os dias pelos santos não só por nós, mas também pelas pessoas que precisavam — mesmo que não fossem da mesma religião. A generosidade dela me ensinou que fé não combina com intolerância. Em um país tão plural quanto o Brasil, respeitar a crença do outro é essencial para uma convivência mais justa.</p>
+                        <p>Algumas atividades da disciplina, como a troca de objetos, me fizeram perceber que tudo carrega história e afeto. Quando trocamos algo, não é só o objeto em si — é um pedaço da nossa memória que passa para outra pessoa. Isso reforça o quanto nossas identidades são construídas nas relações.</p>
+                        <p>No fim das contas, essa disciplina foi mais do que conteúdo acadêmico: foi um espelho. Um espaço para eu reconhecer minhas raízes, meus desafios e minhas transformações. Entendi que, mesmo em meio às desigualdades e tentativas de silenciamento, minha história é feita de resistência, afeto, pluralidade e mudança. E também aprendi a olhar para o outro com mais respeito, entendendo que cada pessoa carrega uma trajetória única.</p>
+                        <p>Pelo meu envolvimento nas aulas, pelas leituras, pelas reflexões e pela forma como conectei teoria e vida, acredito que o conceito A é o mais justo — porque realmente me empenhei e cresci com essa experiência.</p>
+                    `
+                },
+                {
+                    id: 8,
+                    titulo: "Aula 8: Lugar de Fala, Conflitos e as Realidades Invisíveis",
+                    introducao: "Uma reflexão sobre como nossas trajetórias — da escola pública à particular, do ônibus lotado ao cansaço — moldam nosso lugar de fala e a forma como encaramos os conflitos.",
+                    textoCompleto: `
+                        <p>Nas discussões sobre conflitos, é recorrente que apareça o assunto do lugar de fala. A ideia de que só pode opinar quem pertence a determinado grupo até parece lógica à primeira vista, mas na prática não funciona de um jeito tão engessado assim. Todo mundo pode falar sobre os conflitos que enxerga, mas nem todo mundo sabe como é viver aquilo. E isso muda completamente a forma como cada pessoa entende o problema.</p>
+                        <p>Algo que me fez perceber isso na pele foi a mudança da escola pública para a particular, lá pelos meus 15 anos. Eu sempre cresci em um ambiente onde estudar era responsabilidade real, quase uma questão de sobrevivência, porque a gente escuta desde cedo que passar numa faculdade pública é o que define o futuro. Na escola pública, eu via as diferenças escancaradas — desde estrutura até as expectativas sobre a gente. Era como se todo mundo ali carregasse um peso parecido.</p>
+                        <p>Mas quando fui para a escola particular, tudo virou de cabeça para baixo. O deslocamento, que antes era de 7 minutos, passou a ser de 1 hora. As pessoas eram completamente diferentes do que eu estava acostumada, com realidades e prioridades que às vezes pareciam até distantes demais da minha. Enquanto para mim entrar numa universidade pública era um objetivo enorme, para muitos ali era só mais uma etapa “natural”, quase óbvia, sem a carga de cobrança que eu estava acostumada a ouvir. E de repente, mesmo estando naquele espaço, eu já não me sentia mais parte do mesmo lugar de fala que carreguei minha vida toda.</p>
+                        <p>Hoje, vivendo a rotina da faculdade, essas diferenças ficam ainda mais claras. Eu passo cerca de 2 horas para chegar ao campus, todos os dias, em uma linha lotada que mal deixa espaço para respirar. Tem dias em que antes mesmo da primeira aula eu já estou cansada — porque o tempo que eu poderia estar dormindo, descansando, cuidando de mim, eu passo dentro do ônibus. E isso não acontece só na ida: são 2 horas até o trabalho e depois mais 2 até minha casa. No final das contas, passo mais tempo no transporte público do que na minha própria casa ou dentro da faculdade.</p>
+                        <p>Enquanto isso, vejo colegas que chegam de carro, de motorista por aplicativo, ou que moram perto e acordam com a calma que eu adoraria ter. Essas diferenças, às vezes invisíveis para quem não vive, influenciam como cada um participa das discussões, como entende os conflitos e até como percebe o próprio desempenho acadêmico.</p>
+                        <p>E é aí que entra a convivencialidade e o cuidado: entender que cada um carrega trajetórias diferentes, ritmos diferentes, batalhas silenciosas diferentes. Que nem sempre quem fala alto entende mais, e nem sempre quem fica quieto está “desinteressado”. A vida acontece antes da sala de aula — no ônibus lotado, na correria, nas expectativas sociais, nos mundos que a gente tenta equilibrar ao mesmo tempo.</p>
+                        <p>No fim, percebi que conflitos não são só brigas ou discordâncias; muitas vezes são essas pequenas tensões entre realidades, essas diferenças de caminhada que a gente tenta fazer caber no mesmo espaço. Reconhecê-las é um jeito de cuidar do outro e da gente mesma. E, principalmente, é um jeito de entender que equidade não existe pronta — ela é construída.</p>
+                        
+                        <hr class="my-8 border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Obras sugeridas:</h3>
+                        <p><a href="https://www.nexojornal.com.br/expresso/2017/11/27/O-que-%C3%A9-lugar-de-fala" target="_blank">Lugar de fala – Djamila Ribeiro (entrevista)</a></p>
+                        <p><a href="https://www.ufmg.br/online/arquivos/043189.shtml" target="_blank">Convivialidade e conflitos sociais (UFMG)</a></p>
+                        <p><a href="https://www.youtube.com/watch?v=U1s8xkZYSz4" target="_blank">Judith Butler — Políticas do corpo</a></p>
+                    `
+                },
                 {
                     id: 9,
-                    titulo: "Atividades",
-                    introducao: "Uma coleção de atividades, exercícios praticos e outras reflexões feitas durante as aulas.",
+                    titulo: "Aula 9: Movimentos Sociais, Cuidado e a Política do Cotidiano",
+                    introducao: "Reflexões sobre como a desobediência civil e os movimentos sociais se manifestam no dia a dia, transformando o cansaço em resistência e o conflito em diálogo.",
+                    textoCompleto: `
+                        <p>Ao entrar em contato com obras que discutem movimentos sociais e a força coletiva dos corpos nas ruas, algo muda — não só na compreensão teórica, mas na forma como certas experiências pessoais ganham outro sentido. A ideia de que a presença pode ser um ato de desobediência civil faz lembrar situações vividas em silêncio, quando a resistência não veio de cartazes ou discursos, mas do simples ato de permanecer onde não parecia existir espaço para alguém com a trajetória marcada por deslocamentos longos, escolas diferentes e realidades contrastantes.</p>
+                        <p>Histórias como a de quem passou a infância e parte da adolescência em escola pública e, aos 15 anos, precisou enfrentar uma mudança abrupta para o ensino particular ilustram bem isso. Não foi só a distância física que aumentou — de sete minutos para uma hora de caminho — mas também a distância simbólica. O corpo que antes se misturava a outros com histórias parecidas passou a ocupar um lugar em que cobranças, expectativas e privilégios eram distribuídos de forma desigual. Esse deslocamento forçado, ainda que silencioso, já é um tipo de desobediência: o corpo insiste em existir onde não esperavam que estivesse.</p>
+                        <p>A rotina universitária reforça ainda mais essa dimensão política do cotidiano. Acordar horas antes do amanhecer, enfrentar ônibus lotados por dois longos períodos até chegar à faculdade, seguir para o trabalho repetindo o mesmo trajeto e só chegar em casa depois de mais dois deslocamentos exaustivos — tudo isso forma uma experiência que muitos não enxergam, mas que revela como a violência estrutural atravessa a vida de quem depende do transporte público para existir no mundo. Enquanto algumas pessoas percorrem distâncias curtas ou chegam de carro, outros passam mais tempo dentro de um ônibus do que em suas próprias casas. Esses corpos também fazem política, mesmo sem bandeiras, porque carregam nas costas o peso das desigualdades que raramente são reconhecidas.</p>
+                        <p>Encontrar movimentos sociais, culturais, identitários e ambientais — seja nas ruas, seja em leituras — amplia o entendimento dessas vivências. Quando se observa a força de manifestações que lutam por terra, educação, moradia, igualdade de gênero ou preservação ambiental, fica mais fácil reconhecer nos pequenos atos cotidianos uma espécie de marcha íntima: uma forma de insistir na existência apesar dos obstáculos. As lutas coletivas ajudam a perceber que resistir não exige necessariamente participar de protestos; às vezes, a resistência aparece em gestos simples, como continuar estudando apesar do cansaço, continuar se posicionando mesmo quando a voz treme, continuar acreditando na possibilidade de um mundo mais justo.</p>
+                        <p>A comunicação não violenta entra como uma ferramenta essencial nesse processo. Transformar conflitos em diálogo não significa apagar as dores, mas criar pontes. Muitos dos conflitos vividos na faculdade — discussões sobre gênero, sobre desigualdades educacionais, sobre a diferença brutal entre quem atravessa a cidade todos os dias e quem chega descansado — só ganham sentido quando são mediados com cuidado. Aprender a escutar e a ser escutado é tão político quanto marchar.</p>
+                        <p>Ao observar movimentos ambientais como a Marcha pela Terra, por exemplo, percebe-se que cada passo carregado de indignação e esperança também é um passo de cuidado. Cuidado com a terra, com o corpo, com a história que se constrói junto com outras pessoas. E esse cuidado dialoga diretamente com quem passou a vida tentando provar sua utilidade para um sistema que exige produtividade constante — como se valesse menos quem dorme pouco porque passa horas em ônibus lotados, ou quem precisa lutar duas vezes mais para ser levado a sério. As reflexões propostas por autores como Ailton Krenak ajudam a ressignificar esse cansaço, lembrando que viver não precisa virar um ato de sobrevivência permanente.</p>
+                        <p>Assim, conflitos sociais deixam de ser apenas eventos distantes, e passam a ser reconhecidos como parte dos pequenos enfrentamentos cotidianos. A mediação desses conflitos começa quando se percebe que os movimentos sociais não estão só nas ruas, mas no corpo que insiste em existir, no esforço para chegar à faculdade todos os dias, nas conversas que questionam desigualdades naturalizadas, nos gestos que recusam a violência estrutural que tenta silenciar certas trajetórias.</p>
+                        <p>Ao olhar para tudo isso, torna-se possível entender: movimentos sociais são feitos de muitas marchas — inclusive aquelas que acontecem sem que ninguém perceba. E cada corpo que permanece, cada palavra que se recusa a aceitar o mundo como está, cada gesto de cuidado com o outro e consigo mesmo já faz parte dessa transformação.</p>
+                    `
+                },
+                {
+                    id: 10,
+                    titulo: "Aula 10: Democracia e Cidadania: Do Conceito à Vivência",
+                    introducao: "Uma análise sobre como a democracia deixa de ser teoria e vira sensação nas rotinas marcadas por desigualdades, transporte público e acesso à educação.",
+                    textoCompleto: `
+                        <p>Falar de democracia muitas vezes parece abstrato, como se fosse apenas um conceito distante das vidas comuns. Mas, quando se olha para as rotinas marcadas por longas horas de deslocamento, pela diferença brutal entre escolas, pelo acesso desigual a serviços públicos, a democracia deixa de ser teoria e vira sensação: a de estar incluído ou deixado para trás. Muitas histórias cotidianas mostram isso com clareza — histórias de quem aprendeu cedo que nem todo mundo chega ao mesmo lugar pelos mesmos caminhos.</p>
+                        <p>Quando se pensa em cidadania, é impossível ignorar esses caminhos. Há quem atravesse a cidade inteira em transporte público lotado, gastando duas horas para chegar ao trabalho, outras duas para ir à faculdade e mais duas para voltar para casa. E há quem precise apenas abrir a porta da garagem. A experiência de estar exausto antes mesmo de o dia começar diz mais sobre políticas públicas do que muitos discursos oficiais: diz onde o Estado está presente e onde ele se ausenta.</p>
+                        <p>Do mesmo modo, estudar em escola pública até os 15 anos e depois migrar para uma escola particular mostra, na prática, que as oportunidades não são distribuídas igualmente. A democracia promete igualdade, mas a realidade revela camadas sobre camadas de desigualdade estrutural. Enquanto alguns enfrentam salas superlotadas, falta de recursos e cobranças enormes para “vencer na vida”, outros lidam com expectativas moldadas por facilidades que sempre estiveram ali, silenciosas, quase naturais. São experiências diferentes, mas todas atravessadas por políticas públicas — ou pela falta delas.</p>
+                        <p>A cidadania, nesse sentido, não se resume ao direito de votar ou portar documentos. Ela se manifesta no direito de estudar sem precisar provar cem vezes o próprio valor. No direito de ir e vir sem que isso consuma metade do dia. No direito de ser ouvido, de existir, de ter acesso ao que o Estado deveria garantir: educação, transporte, saúde, segurança, dignidade.</p>
+                        <p>Democracia é promessa, mas também é disputa. E essa disputa aparece em discussões na sala de aula sobre desigualdade educacional, nos debates sobre quem realmente consegue acessar universidades públicas, nos olhares que nem sempre entendem por que algumas pessoas chegam atrasadas — sem perceber que, antes da primeira aula, essas pessoas já enfrentaram um trajeto que muitos nunca fizeram.</p>
+                        <p>Ao mesmo tempo, democracia é também construção coletiva. Ela se fortalece quando experiências diferentes são colocadas lado a lado, quando se reconhece que cidadanias são múltiplas e atravessadas por classe, gênero, território, raça e condições de vida. E é nesse ponto que o conceito de políticas públicas se torna central: são elas que podem reduzir distâncias, abrir portas, criar condições reais para que as promessas democráticas saiam do papel.</p>
+                        <p>Políticas públicas de transporte podem devolver horas de vida. Políticas de educação podem transformar trajetórias, permitindo que alguém que estudou metade da vida em escola pública entre na universidade e encontre um lugar de pertencimento. Políticas de assistência podem impedir que o cansaço vire desistência. E políticas de igualdade de gênero podem oferecer segurança e voz às mulheres que ainda lutam para existir plenamente em espaços que as silenciam.</p>
+                        <p>Ao observar esses atravessamentos, percebemos que cidadania também é afeto. É sentir-se parte de algo maior. É saber que a própria existência tem valor político, mesmo quando a vida parece corrida demais para perceber isso. É entender que, embora o Estado nem sempre alcance todos os corpos da mesma maneira, há sempre a possibilidade de reivindicar, reconstruir, exigir — e essa exigência cotidiana, silenciosa ou não, também é democracia.</p>
+                        <p>No fim, a democracia vive nesses pequenos movimentos: no corpo cansado que insiste em chegar; na jovem que ocupa espaços onde não esperavam vê-la; na estudante que aprende a reconhecer desigualdades para transformá-las; no cidadão que, mesmo diante das falhas do Estado, continua acreditando que a política pode, sim, melhorar vidas. A cidadania floresce nesses gestos. E talvez seja dessa soma de histórias individuais que nasce a democracia que queremos — uma que não fique apenas nos livros, mas que caminhe ao lado das pessoas.</p>
+                        
+                        <hr class="my-8 border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Obras sugeridas:</h3>
+                        <p><a href="https://www.ipea.gov.br/pnadc/questoes-sociais/o-que-sao-politicas-publicas" target="_blank">O que são políticas públicas? (IPEA)</a></p>
+                        <br>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Vídeos:</h3>
+                        <p><a href="https://www.youtube.com/watch?v=uWwKjFhXxkE" target="_blank">Canal Futura — Cidadania e Estado</a></p>
+                    `
+                },
+                {
+                    id: 11,
+                    titulo: "Aula 11: Tecnologia, Liberdade e Insegurança: O Corpo Conectado",
+                    introducao: "Uma reflexão sobre como dispositivos como celulares e tablets moldam nossa rotina acadêmica, trazendo liberdade mas também vulnerabilidade, em um mundo marcado pela uberização e IA.",
+                    textoCompleto: `
+                        <p>As transformações tecnológicas sempre chegam antes de termos tempo de compreendê-las. Basta observar a rotina de qualquer estudante: quase tudo que antes exigia papel, presença e conversa agora se concentra em telas. Na universidade, materiais de apoio, lembretes, envios de atividades e interações com professores acontecem por meio digital. São tantas possibilidades de comunicação que, paradoxalmente, a presença humana às vezes parece desaparecer. Perfis ativos nas redes sociais convivem com silêncios nos corredores, como se o convívio fosse mais confortável quando mediado por telas do que por olhares.</p>
+                        <p>No cotidiano acadêmico e profissional, as tecnologias pessoais têm um papel silencioso, porém decisivo. Um tablet, por exemplo, consegue transformar horas de estudo em algo mais leve — literalmente e emocionalmente. Ele reduz o peso da mochila, concentra anotações, organiza PDFs, lembra prazos; vira uma extensão da memória que permite estudar em qualquer lugar, inclusive no transporte público. O celular, por sua vez, é ponte para tudo: comunicação com amigos, pagamento de contas, registro de compromissos, notícias do mundo, redes sociais, aplicativos de transporte e comida. É uma pequena central de vida, onde dias inteiros podem caber. Já o notebook dá acesso ao universo do trabalho, às tarefas profissionais, às plataformas, aos documentos e às reuniões — como se carregasse, em uma única máquina, a fronteira entre vida pessoal e vida produtiva.</p>
+                        <p>Esses dispositivos trazem uma sensação de liberdade valiosa: trabalhar no ônibus, estudar no parque, resolver demandas da faculdade em qualquer intervalo. Mas essa mesma liberdade convive com um medo constante — o de perder tudo em um assalto, de ver o esforço guardado em arquivos desaparecer em segundos, de ter nas mãos objetos que facilitam a vida e, ao mesmo tempo, tornam o corpo mais vulnerável nas ruas. A tecnologia, nesse caso, amplia horizontes, mas também amplia inseguranças.</p>
+                        <p>Essa ambiguidade se repete em todas as esferas sociais. O celular que organiza o dia é o mesmo que funciona como base de dados para empresas. O tablet que facilita o estudo também revela quanto do processo educacional migrou para o digital. O notebook que dá acesso ao trabalho mostra como o emprego se mistura cada vez mais com a vida doméstica. E por trás de cada toque na tela, existe um fluxo de dados sendo coletado, analisado e transformado em informação — matéria-prima da economia contemporânea.</p>
+                        <p>A chamada uberização do trabalho, amplificada por essas tecnologias, cria novas formas de sobrevivência. Motoristas, entregadores e cuidadores são intermediados por plataformas que calculam trajetórias, avaliam desempenhos, distribuem demandas e monitoram o tempo. A promessa de autonomia convive com a dependência algorítmica. Quem trabalha nessas plataformas vive entre a liberdade de escolher horários e a pressão constante por produtividade, enquanto seus dados alimentam sistemas que preveem comportamentos e moldam rotinas.</p>
+                        <p>Big data e inteligência artificial intensificam esse cenário. Cada deslocamento registrado, cada compra, cada conversa salva, cada curtida desperta padrões que alimentam modelos matemáticos. Esses sistemas aprendem mais sobre as pessoas do que elas próprias percebem — e muitas vezes mais do que gostariam. Eles ajustam recomendações, influenciam decisões, moldam percepções de mundo e até participam do processo de contratação de trabalhadores. A IA não apenas observa a vida; ela participa dela, silenciosamente.</p>
+                        <p>E tudo isso acontece enquanto as relações humanas vão sendo reconfiguradas. Conversas espontâneas, filas compartilhadas, encontros casuais, pedidos de ajuda — tudo isso perde espaço para sistemas automatizados. Restaurantes podem ser substituídos por entregas rápidas; interações, por atendimentos virtuais; serviços, por bots que simulam empatia. Comodidade cresce, contato diminui.</p>
+                        <p>Ainda assim, as tecnologias continuam funcionando como apoio indispensável para quem precisa conciliar estudo, trabalho e deslocamentos longos. Elas permitem aproveitar pequenos intervalos, acessar conhecimento, registrar ideias, organizar a vida. Mas também lembram, diariamente, que o corpo que carrega esses dispositivos é o mesmo que enfrenta insegurança nas ruas, desigualdade no transporte e precarização no trabalho.</p>
+                        <p>No fim, talvez o grande conflito contemporâneo esteja justamente nesse equilíbrio instável entre liberdade e risco, autonomia e dependência, conexão e solidão. A tecnologia oferece ferramentas poderosas para ampliar o mundo, mas exige que se aprenda a navegar suas consequências — políticas, sociais, emocionais e até corporais.</p>
+                        <p>Viver nesse contexto significa reconhecer que cada dispositivo guardado na mochila carrega, ao mesmo tempo, possibilidade e fragilidade. E que, apesar de toda automação, ainda é a experiência humana — cansada, inquieta, curiosa — que tenta dar sentido a tudo isso.</p>
+                        
+                        <hr class="my-8 border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Obras sugeridas:</h3>
+                        <p><a href="https://revistas.ufpr.br/psicologia/article/view/74780" target="_blank">Uberização e precarização do trabalho – UFPR</a></p>
+                        <p><a href="https://repositorio.enap.gov.br/handle/1/5892" target="_blank">Big data e impactos sociais (IBGE/ENAP)</a></p>
+                    `
+                },
+                {
+                    id: 12,
+                    titulo: "Aula 12: Antropoceno, Decrescimento e o Desafio de Imaginar Futuros",
+                    introducao: "Uma reflexão sobre a crise climática não apenas como dado científico, mas como sensação cotidiana, e as possibilidades trazidas pelo decrescimento para reinventar nossa relação com o planeta.",
+                    textoCompleto: `
+                        <p>A cada aula sobre crise climática, torna-se mais evidente que o Antropoceno não é apenas um período geológico, mas uma sensação. A sensação de que o planeta entrou em um ritmo que o corpo humano não consegue acompanhar. As imagens apresentadas nas palestras — enchentes, secas extremas, ondas de calor — deixam claro que não se trata mais de um futuro distante, mas de um presente que atravessa o cotidiano de forma silenciosa e constante.</p>
+                        <p>As discussões acadêmicas ecoam isso: a ideia de que a sociedade capitalista impulsionou um modelo de desenvolvimento baseado em crescimento infinito, enquanto os limites planetários permanecem finitos. José Eustáquio Diniz Alves descreve o Antropoceno como a “era do colapso ambiental”, mas basta observar o cotidiano para perceber essa definição na prática. Há bairros que alagam com qualquer chuva, lugares que se tornam inviáveis para caminhar em determinados horários por causa do calor, e rotinas inteiras alteradas porque a natureza já não responde como antes.</p>
+                        <p>Nas conversas entre estudantes, surge sempre a mesma inquietação: como viver em um mundo que parece estar se exaurindo? Em trajetos longos até a faculdade — onde o calor dentro do ônibus se mistura à fumaça dos carros — é possível sentir, mesmo sem perceber, os efeitos de um planeta mais sobrecarregado. Há quem tenha crescido em regiões onde a água já não chega com regularidade, ou onde a vegetação diminuiu tanto que a sombra sumiu das calçadas. Essas experiências pessoais reforçam que a crise climática não é apenas um tema científico; é um elemento que reorganiza a vida social.</p>
+                        <p>Ao mesmo tempo, começam a surgir outras formas de olhar para o futuro. As ideias de decrescimento e pós-crescimento, discutidas por Giorgos Kallis, Demaria e D’Alisa, oferecem possibilidade de imaginar uma sociedade que não dependa de produzir cada vez mais. Em vez de medir bem-estar por números de consumo, essas perspectivas propõem repensar prioridades: reduzir excessos, diminuir exploração, reconstruir relações com a terra. Nas salas de aula, essas propostas soam radicais à primeira vista, mas ganham sentido quando comparadas ao esgotamento evidente do mundo atual.</p>
+                        <p>O decrescimento, por exemplo, não significa retroceder ou abandonar tecnologia, mas questionar para quem e para quê ela serve. Muitos estudantes observam isso no próprio cotidiano: é comum carregar celulares, tablets e notebooks que facilitam tarefas e ampliam possibilidades, mas que também dependem de cadeias produtivas intensas em energia, minerais e resíduos. Esses objetos são ferramentas de estudo e trabalho, mas carregam rastros ambientais que raramente são percebidos. É nesse ponto que autores como Serge Latouche insistem na necessidade de “descolonizar o imaginário” — abandonar a ideia de que progresso é sempre expansão, e reconhecer que cuidar do planeta exige desacelerar.</p>
+                        <p>Bruno Latour reforça essa reflexão ao perguntar “onde aterrar?” no Antropoceno. Entre dados alarmantes, crises ambientais e a sensação generalizada de incerteza, torna-se necessário encontrar um lugar político, ético e emocional para existir. Nas universidades, essa pergunta aparece de maneira concreta quando estudantes discutem seu próprio futuro profissional: como pensar em carreiras e projetos de vida em um planeta que dá sinais claros de esgotamento? Como estudar ciência, economia, tecnologia ou administração sem considerar o impacto que cada uma dessas áreas exerce sobre o ambiente?</p>
+                        <p>Ao analisar grupos que lutam contra a crise climática — indígenas, comunidades tradicionais, movimentos socioambientais urbanos, coletivos de juventude — percebe-se outra lógica de existência. São grupos que defendem terra, água, floresta e modos de vida que não se encaixam na lógica do crescimento acelerado. Suas propostas não passam por aumentar produção, mas por garantir continuidade da vida. Esse contraste se torna especialmente marcante para estudantes que crescem em ambientes urbanos e vivenciam, muitas vezes pela primeira vez na universidade, a percepção de que há outras formas de organizar o mundo.</p>
+                        <p>Assim, estudar o Antropoceno e o decrescimento não é apenas aprender teorias, mas aprender a ler o presente. A crise climática se revela nos mapas, nos dados, nos gráficos, mas também nas pequenas histórias, nas mudanças de rotina, no desconforto crescente diante de ondas de calor, no medo da próxima tempestade, no receio de que as próximas gerações recebam um planeta menos habitável.</p>
+                        <p>E talvez seja justamente nesse ponto — entre a urgência do colapso e a possibilidade de novos caminhos — que surge o maior desafio das sociedades contemporâneas: imaginar futuros que não dependam de destruir o agora. O decrescimento, o pós-crescimento e as propostas socioambientais não prometem soluções rápidas, mas oferecem algo que parece cada vez mais raro: a chance de recomeçar de outro jeito.</p>
+                        
+                        <hr class="my-8 border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Obras sugeridas:</h3>
+                        <p><a href="https://degrowth.info/en/read/what-is-degrowth" target="_blank">Introdução ao Decrescimento – Kallis, Demaria e D’Alisa (trecho disponível)</a></p>
+                        <p><a href="https://moodle.ufabc.edu.br/pluginfile.php/324744/mod_page/content/9/Crise%20Clim%C3%A1tica.pptx" target="_blank">Érica Guerreiro – Mudanças Climáticas (UFABC / slides + palestra)</a></p>
+                    `
+                },
+                {
+                    id: 13,
+                    titulo: "Aula 13: Pensamento Decolonial: Reconstruindo Saberes e Futuros",
+                    introducao: "Uma reflexão sobre como o pensamento decolonial propõe retomar saberes ancestrais e desacelerar diante da 'sociedade do cansaço', imaginando futuros onde o desenvolvimento não dependa da destruição.",
+                    textoCompleto: `
+                        <p>Nas discussões sobre pensamento decolonial, algo se torna evidente: muitas das referências que estruturam o modo como a sociedade entende conhecimento, progresso e desenvolvimento foram construídas a partir de perspectivas muito limitadas — frequentemente europeias, brancas, masculinas e distantes da realidade vivida por grande parte da população mundial. Quando se começa a observar o cotidiano sob essa lente, pequenas experiências revelam as marcas profundas dessas estruturas.</p>
+                        <p>Por exemplo, as mudanças alimentares ao longo do tempo mostram como o rompimento com saberes ancestrais ocorreu de maneira silenciosa, mas constante. Durante muito tempo, os alimentos eram produzidos de acordo com ritmos naturais, diversidades regionais e práticas tradicionais. Hoje, a monocultura, os ultraprocessados, os agrotóxicos e o extrativismo industrial transformaram não apenas a relação com o alimento, mas também com a terra. A produção deixa de respeitar ciclos e passa a obedecer demandas do mercado, enquanto rios são contaminados, florestas são desmatadas e vidas — humanas e não humanas — são afetadas.</p>
+                        <p>Essas transformações não são apenas ambientais: são coloniais. Elas revelam a continuidade de um modelo que prioriza lucro sobre vida, eficiência sobre cuidado, produtividade sobre bem-estar. E mesmo em debates globais, como os que deveriam ocorrer em conferências ambientais internacionais, muitas vezes as vozes que buscam alternativas são interrompidas, desviadas ou simplesmente ignoradas. Não é raro que eventos importantes sejam adiados, esvaziados ou desviados da pauta central — há sempre uma emergência maior, um interesse forte demais, uma narrativa que tenta silenciar quem propõe outra forma de pensar o futuro.</p>
+                        <p>Esse silenciamento também aparece em experiências cotidianas. Apesar de viver em um país democrático, há grupos que precisam reafirmar seus direitos diariamente — o direito de existir, de circular, de se expressar. Há quem, mesmo após estudar longas horas, trabalhar, se deslocar por ambientes inseguros e enfrentar uma rotina exaustiva, ainda precise calcular se pode sair de casa em determinados horários sem medo. A promessa do “direito de ir e vir” nem sempre contempla todas as vidas da mesma forma, e isso evidencia o quanto as estruturas sociais ainda carregam heranças coloniais: algumas existências são vistas como mais protegidas que outras.</p>
+                        <p>O pensamento decolonial propõe justamente o contrário. Ele busca retomar saberes que foram apagados: formas de cuidado com a terra, relações comunitárias, modos de aprender que não cabem em apostilas, tecnologias que nascem da observação da natureza, medicinas ancestrais, espiritualidades que conectam corpo e território. Esses saberes não pertencem ao passado; são alternativas potentes para pensar o futuro. Eles aparecem nas comunidades que resistem ao avanço do extrativismo, nos povos que defendem rios e florestas, nos grupos que reinventam relações de trabalho e convivência, e até nos estudantes que, cansados da velocidade das telas, encontram paz em pequenos refúgios de natureza — mesmo que seja apenas o desejo de morar em um lugar com silêncio, pássaros e água correndo.</p>
+                        <p>Ao mesmo tempo, compreender as estruturas contemporâneas exige observar o que Byung-Chul Han chamou de sociedade do cansaço: um mundo que exige produtividade constante, que transforma descanso em culpa e autocuidado em luxo. No meio dessa exaustão coletiva, pensar em decolonização é também pensar em desacelerar. É imaginar um futuro que não dependa de esgotamento. É repensar a própria noção de sucesso, deslocando-a de métricas coloniais para projetos de vida que façam sentido — trabalhar com algo que traga propósito, viver em ambientes que gerem calma, construir relações mais humanas.</p>
+                        <p>Essa perspectiva mostra que interdisciplinaridade não é apenas uma técnica acadêmica; é uma forma de enxergar o mundo. As fronteiras entre áreas começam a se desfazer quando se percebe que as crises sociais, ambientais, emocionais e políticas são interligadas. Formar-se em uma universidade hoje significa aprender a dialogar com saberes diferentes, reconhecer limites e valorizar conhecimentos que não cabem em bibliografias tradicionais. O profissional do século XXI não atua apenas com dados, mas com histórias; não trabalha apenas com tecnologia, mas com sensibilidades; não resolve problemas apenas com cálculos, mas com escutas.</p>
+                        <p>O pensamento decolonial, portanto, não é um conjunto de teorias distantes: é uma proposta de reconstrução. Ele convida a imaginar futuros em que saberes ancestrais se entrelaçam com ciência contemporânea, onde o desenvolvimento não depende de destruição, onde a vida — humana e não humana — ganha centralidade, e onde cada pessoa pode finalmente existir sem medo, com dignidade e com espaço para sonhar.</p>
+                        
+                        <hr class="my-8 border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Obras sugeridas:</h3>
+                        <p><a href="https://www.ufrgs.br/lumina/o-que-e-decolonialidade/" target="_blank">O que é pensamento decolonial? (UFRGS)</a></p>
+                        <p><a href="https://www.youtube.com/watch?v=BZC7Yg3pVwQ" target="_blank">Ailton Krenak — Saberes ancestrais</a></p>
+                    `
+                },
+                // --- ATIVIDADES MANTIDAS AO FINAL ---
+                {
+                    id: 14, 
+                    titulo: "Atividade 1: Troca",
+                    introducao: "Uma coleção de reflexões sobre a atividade de trocas de objetos, revelando como pequenos itens carregam memórias e afetos.",
                     textoCompleto: `
                         <p>Há coisas que parecem simples à primeira vista — um marca-texto, uma fita decorativa, uma caneta. Mas quando olhamos mais de perto, percebemos que nada do que carregamos é por acaso. Cada objeto é um pequeno guardião de lembranças, um fragmento do que fomos, do que somos e do que nos tornamos ao longo do caminho.</p>
                         <p>Na atividade de trocas que fizemos em sala, fomos convidados a deixar um pouco de nós no palco. Ali, sobre uma mesa simples, objetos se transformaram em histórias.</p>
@@ -247,8 +429,19 @@ Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nor
                         <p>Trocar objetos, nesse sentido, foi também trocar afetos, reconhecer o outro e ser reconhecida.</p>
                         <p>Foi olhar para algo e, por um instante, sentir que compreendia um pedaço da história de alguém — e permitir que alguém compreendesse um pedaço da minha.</p>
                     `
+                },
+                {
+                    id: 15,
+                    titulo: "Atividade 2: Exposição",
+                    introducao: "Uma reflexão sobre a exposição 'Corpos de Silício', que questiona a obsolescência tecnológica e como o 'futuro' se torna rapidamente passado.",
+                    textoCompleto: `
+                        <p>A exposição Corpos de Silício apresentava uma coleção de artefatos tecnológicos que, em diferentes épocas, foram vistos como símbolos do futuro. Cada objeto exposto — celulares antigos, computadores robustos, câmeras ultrapassadas, dispositivos que um dia foram inovadores — trazia consigo a promessa de transformar o cotidiano. Eram tecnologias celebradas, desejadas e, muitas vezes, consideradas indispensáveis. No entanto, esses mesmos artefatos, que um dia representaram avanço, hoje pertencem ao passado.</p>
+                        <p>A proposta da exposição não era apenas mostrar tecnologias antigas, mas provocar uma reflexão sobre a velocidade com que o futuro se torna obsoleto. Muitos dos objetos exibidos já não têm função prática, alguns nem são reconhecidos por gerações mais jovens. Eles se tornam fragmentos de memória, testemunhos de um tempo no qual cada novidade parecia definitiva — até ser substituída por outra.</p>
+                        <p>Ao reunir essas peças, a exposição evidenciava que a tecnologia nunca é estática: ela muda, envelhece, desaparece. Mas, ao mesmo tempo, deixa marcas profundas na forma como sociedades se organizam, trabalham e imaginam o futuro. Cada artefato contava uma história sobre a relação humana com o progresso: o entusiasmo diante do novo, a rapidez do descarte, a crença de que a próxima inovação resolveria problemas antigos.</p>
+                        <p>Corpos de Silício também convidava a pensar na própria fragilidade das promessas tecnológicas. Assim como aqueles objetos perderam utilidade, muitas expectativas depositadas no “futuro digital” se desfazem à medida que novas demandas surgem. A exposição revelava que o futuro não é uma linha reta, mas uma sucessão de tentativas, erros e reinvenções. Aquilo que um dia foi indispensável torna-se ruína; aquilo que hoje é central provavelmente ocupará o mesmo destino amanhã.</p>
+                        <p>Ao final, a ideia central da mostra era clara: toda tecnologia carrega um tempo, um corpo e uma história. Ela nasce com a promessa de transformar o mundo, cresce enquanto é utilizada e, eventualmente, se desfaz, dando lugar a outras camadas de futuro. Observar esses artefatos é observar como a sociedade imagina, consome e abandona seus próprios sonhos de modernidade. É reconhecer que, assim como os objetos, nós também mudamos — e somos atravessados por cada inovação que surge e desaparece.</p>
+                    `
                 }
-                // --- FIM DA ATUALIZAÇÃO DAS ATIVIDADES ---
             ];
             // -----------------------------------------------------------------
             // ----- FIM DA ÁREA DE EDIÇÃO -----
@@ -326,4 +519,3 @@ Aqui estão as histórias que moldaram quem sou — das raízes indígenas e nor
 
 </body>
 </html>
-
